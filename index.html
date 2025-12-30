@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Suite PRO - Executive</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <i class="fas fa-crown"></i>
+                <span class="logo-text">MASTER SUITE</span>
+            </div>
+
+            <div class="nav-section">Essential</div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-mode="calculator"><i class="fas fa-calculator"></i>
+                    <span>Calculator</span>
+                </li>
+                <li class="nav-item" data-mode="converter"><i class="fas fa-arrows-spin"></i> <span>Converter</span>
+                </li>
+                <li class="nav-item" data-mode="financial"><i class="fas fa-vault"></i> <span>Financial</span></li>
+                <li class="nav-item" data-mode="graph"><i class="fas fa-wave-square"></i> <span>Grapher</span></li>
+            </ul>
+
+            <div class="nav-section">Advanced</div>
+            <ul class="nav-links">
+                <li class="nav-item" data-mode="matrix"><i class="fas fa-border-all"></i> <span>Matrix Ops</span></li>
+                <li class="nav-item" data-mode="equations"><i class="fas fa-variable"></i> <span>Equations</span></li>
+                <li class="nav-item" data-mode="programmer"><i class="fas fa-terminal"></i> <span>Programmer</span></li>
+            </ul>
+
+            <div class="nav-section">Executive Tools</div>
+            <ul class="nav-links">
+                <li class="nav-item" data-mode="stopwatch"><i class="fas fa-timer"></i> <span>Stopwatch</span></li>
+                <li class="nav-item" data-mode="password"><i class="fas fa-shield-halved"></i> <span>Password</span>
+                </li>
+                <li class="nav-item" data-mode="health"><i class="fas fa-stethoscope"></i> <span>Health/BMI</span></li>
+            </ul>
+
+            <div class="nav-section">System</div>
+            <ul class="nav-links">
+                <li class="nav-item" data-mode="datetime"><i class="fas fa-clock"></i> <span>Time & Date</span></li>
+                <li class="nav-item" data-mode="settings"><i class="fas fa-sliders"></i> <span>Settings</span></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button id="theme-quick-toggle" class="sidebar-btn" title="Toggle Theme"><i
+                        class="fas fa-moon"></i></button>
+                <div class="version">v3.9 Titanium</div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="mode-info">
+                    <h2 id="current-mode-title">Calculator</h2>
+                    <p id="mode-description">High-precision scientific engine active.</p>
+                </div>
+                <div class="top-actions">
+                    <button id="copy-btn" class="action-btn" title="Copy Result"><i class="fas fa-copy"></i></button>
+
+                    <div id="unit-toggle" class="unit-toggle">DEG</div>
+                    <button id="full-screen-btn" class="action-btn" title="Full Screen"><i
+                            class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- Modes follow the same structure but with updated visual IDs -->
+                <section id="mode-calculator" class="mode-container active">
+                    <div class="calc-grid-wrapper">
+                        <div class="side-panel">
+                            <div class="history-side">
+                                <div class="side-header flex-between">
+                                    <h3>History</h3>
+                                    <button id="clear-history" class="sidebar-btn" style="width:30px; height:30px;"><i
+                                            class="fas fa-trash-can"></i></button>
+                                </div>
+                                <div id="history-list" class="history-list"></div>
+                            </div>
+                            <div class="constants-side">
+                                <h3>Constants</h3>
+                                <div class="constants-grid">
+                                    <button class="const-btn" data-val="3.14159265">π</button>
+                                    <button class="const-btn" data-val="2.71828182">e</button>
+                                    <button class="const-btn" data-val="6.626070e-34">h</button>
+                                    <button class="const-btn" data-val="299792458">c</button>
+                                    <button class="const-btn" data-val="9.80665">g</button>
+                                    <button class="const-btn" data-val="1.61803398">φ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calculator-card">
+                            <div class="display-container">
+                                <div id="mem-indicator" class="mem-indicator">M</div>
+                                <div id="prev-operation" class="prev-operation"></div>
+                                <div id="current-display" class="current-display">0</div>
+                            </div>
+                            <div class="keypad">
+                                <button class="btn func" data-action="clear-all">AC</button>
+                                <button class="btn func" data-action="delete"><i
+                                        class="fas fa-delete-left"></i></button>
+                                <button class="btn memory" data-mem="mc">MC</button>
+                                <button class="btn memory" data-mem="mr">MR</button>
+                                <button class="btn memory" data-mem="ms">MS</button>
+                                <button class="btn operator" data-op="/">÷</button>
+                                <button class="btn scientific" data-sci="sin">sin</button>
+                                <button class="btn num" data-num="7">7</button>
+                                <button class="btn num" data-num="8">8</button>
+                                <button class="btn num" data-num="9">9</button>
+                                <button class="btn memory" data-mem="m-plus">M+</button>
+                                <button class="btn operator" data-op="*">×</button>
+                                <button class="btn scientific" data-sci="cos">cos</button>
+                                <button class="btn num" data-num="4">4</button>
+                                <button class="btn num" data-num="5">5</button>
+                                <button class="btn num" data-num="6">6</button>
+                                <button class="btn scientific" data-sci="fact">n!</button>
+                                <button class="btn operator" data-op="-">−</button>
+                                <button class="btn scientific" data-sci="tan">tan</button>
+                                <button class="btn num" data-num="1">1</button>
+                                <button class="btn num" data-num="2">2</button>
+                                <button class="btn num" data-num="3">3</button>
+                                <button class="btn scientific" data-sci="abs">|x|</button>
+                                <button class="btn operator" data-op="+">+</button>
+                                <button class="btn scientific" data-sci="sqrt">√</button>
+                                <button class="btn num" data-num="0">0</button>
+                                <button class="btn num" data-num=".">.</button>
+                                <button class="btn equals" data-action="calculate">=</button>
+                                <button class="btn scientific" data-sci="pi">π</button>
+                                <button class="btn scientific" data-sci="log">log</button>
+                                <button class="btn scientific" data-sci="pow">xʸ</button>
+                                <button class="btn scientific" data-sci="inv">1/x</button>
+                                <button class="btn scientific" data-sci="bracket-open">(</button>
+                                <button class="btn scientific" data-sci="bracket-close">)</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mode-converter" class="mode-container">
+                    <div class="tool-card">
+                        <div class="input-field">
+                            <label>Conversion Logic</label>
+                            <select id="converter-type" class="tool-select">
+                                <option value="length">Length</option>
+                                <option value="weight">Weight</option>
+                                <option value="temp">Temperature</option>
+                                <option value="currency">Currency</option>
+                                <option value="area">Area</option>
+                                <option value="volume">Volume</option>
+                            </select>
+                        </div>
+                        <div class="grid-2 mt-20">
+                            <div class="input-field">
+                                <label>From</label>
+                                <input type="number" id="convert-from-val" value="1">
+                                <select id="convert-from-unit" class="tool-select mt-10"></select>
+                            </div>
+                            <div class="input-field">
+                                <label>To</label>
+                                <input type="number" id="convert-to-val" readonly>
+                                <select id="convert-to-unit" class="tool-select mt-10"></select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mode-financial" class="mode-container">
+                    <div class="tool-card grid-2">
+                        <div class="fin-form">
+                            <h3>Compound Interest</h3>
+                            <div class="input-field"><label>Principal Amount</label><input type="number"
+                                    id="fin-principal" value="1000"></div>
+                            <div class="input-field"><label>Annual Rate (%)</label><input type="number" id="fin-rate"
+                                    value="10"></div>
+                            <div class="input-field"><label>Period (Years)</label><input type="number" id="fin-years"
+                                    value="5"></div>
+                            <button id="calc-interest" class="btn-action">Project Results</button>
+                        </div>
+                        <div class="res-box flex-center" style="flex-direction:column;">
+                            <span class="res-label">Future Value</span>
+                            <span id="fin-total-val" class="res-val">0 ₺</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mode-graph" class="mode-container">
+                    <div class="graph-layout">
+                        <div class="graph-controls">
+                            <div class="input-field"><label>Function y = </label><input type="text" id="graph-expr"
+                                    value="sin(x)"></div>
+                            <button id="draw-graph" class="btn-action">Draw Function</button>
+                            <button id="export-graph" class="btn-secondary mt-10">Capture PNG</button>
+                            <div id="zoom-val" class="hint mt-20 text-center">Zoom: 100%</div>
+                        </div>
+                        <div class="graph-canvas-box"><canvas id="graph-canvas"></canvas></div>
+                    </div>
+                </section>
+
+                <section id="mode-matrix" class="mode-container">
+                    <div class="tool-card">
+                        <div class="flex-between mb-20">
+                            <h3 style="margin-right:20px;">Matrix Solver</h3>
+                            <select id="matrix-size" class="tool-select" style="width:120px;">
+                                <option value="2">2x2</option>
+                                <option value="3">3x3</option>
+                            </select>
+                            <div class="gap-10 d-flex" style="margin-left:auto;">
+                                <button id="calc-matrix-det" class="btn-action" style="padding:10px 20px;">Det</button>
+                                <button id="calc-matrix-inv" class="btn-action" style="padding:10px 20px;">Inv</button>
+                            </div>
+                        </div>
+                        <div id="matrix-inputs" class="matrix-grid-input grid-2x2"></div>
+                        <div id="matrix-result" class="res-box mt-20"></div>
+                    </div>
+                </section>
+
+                <section id="mode-equations" class="mode-container">
+                    <div class="tool-card text-center">
+                        <h3 class="mb-20">Quadratic Equations</h3>
+                        <p class="hint mb-20">ax² + bx + c = 0</p>
+                        <div class="eq-inputs flex-center gap-14">
+                            <input type="number" id="eq-a" value="1" style="width:60px; text-align:center;"> <span>x²
+                                +</span>
+                            <input type="number" id="eq-b" value="-5" style="width:60px; text-align:center;"> <span>x
+                                +</span>
+                            <input type="number" id="eq-c" value="6" style="width:60px; text-align:center;"> <span>=
+                                0</span>
+                        </div>
+                        <button id="solve-eq" class="btn-action mt-20">Solve Roots</button>
+                        <div id="eq-result" class="res-box mt-20"></div>
+                    </div>
+                </section>
+
+                <section id="mode-programmer" class="mode-container">
+                    <div class="tool-card">
+                        <h3 class="mb-20">Number Multi-Base</h3>
+                        <div class="prog-row" data-base="10"><span>DEC</span> <input type="text" id="prog-dec"
+                                value="0"></div>
+                        <div class="prog-row" data-base="16"><span>HEX</span> <input type="text" id="prog-hex"
+                                value="0"></div>
+                        <div class="prog-row" data-base="8"><span>OCT</span> <input type="text" id="prog-oct" value="0">
+                        </div>
+                        <div class="prog-row" data-base="2"><span>BIN</span> <input type="text" id="prog-bin" value="0">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mode-stopwatch" class="mode-container">
+                    <div class="tool-card text-center">
+                        <div id="stopwatch-display" class="chrono-display"
+                            style="font-size:5rem; font-weight:800; color:var(--accent-color);">
+                            00:00:00.<small>000</small></div>
+                        <div class="flex-center gap-14 mt-20">
+                            <button id="sw-start" class="btn-action" style="width:140px;">Launch</button>
+                            <button id="sw-lap" class="btn-secondary" disabled style="width:100px;">Lap</button>
+                            <button id="sw-reset" class="btn-secondary" style="width:100px;">Reset</button>
+                        </div>
+                        <div id="sw-laps" class="laps-list mt-32"></div>
+                    </div>
+                </section>
+
+                <section id="mode-password" class="mode-container">
+                    <div class="tool-card">
+                        <h3 class="mb-20">Random Key Generator</h3>
+                        <div class="pass-output">
+                            <input type="text" id="pass-val" readonly placeholder="Output...">
+                            <button id="copy-pass" class="sidebar-btn" style="width:40px; height:40px;"><i
+                                    class="fas fa-copy"></i></button>
+                        </div>
+                        <div class="grid-2 mt-20">
+                            <div class="input-field">
+                                <label>Bits/Entropy: <span id="pass-len-val">16</span></label>
+                                <input type="range" id="pass-len" min="6" max="64" value="16">
+                            </div>
+                            <div class="checkbox-grp"
+                                style="display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:center;">
+                                <label><input type="checkbox" id="pass-upper" checked> A-Z</label>
+                                <label><input type="checkbox" id="pass-lower" checked> a-z</label>
+                                <label><input type="checkbox" id="pass-num" checked> 0-9</label>
+                                <label><input type="checkbox" id="pass-sym" checked> @#$</label>
+                            </div>
+                        </div>
+                        <button id="gen-pass" class="btn-action mt-20">Generate Key</button>
+                    </div>
+                </section>
+
+                <section id="mode-health" class="mode-container">
+                    <div class="tool-card grid-2">
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <h3>Health Profile</h3>
+                            <div class="input-field"><label>Height (cm)</label><input type="number" id="h-height"
+                                    value="180"></div>
+                            <div class="input-field"><label>Weight (kg)</label><input type="number" id="h-weight"
+                                    value="75"></div>
+                            <button id="calc-health" class="btn-action mt-10">Get BMI</button>
+                        </div>
+                        <div class="res-box flex-center" style="flex-direction:column;">
+                            <span id="h-bmi" class="res-val">0</span>
+                            <span id="h-status" class="hint">Waiting...</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mode-datetime" class="mode-container">
+                    <div class="tool-card text-center">
+                        <h3 class="mb-20">Chronological Diff</h3>
+                        <div class="flex-center gap-20">
+                            <div class="input-field"><label>Origin</label><input type="date" id="date-start"></div>
+                            <i class="fas fa-forward" style="margin-top:20px; color:var(--accent-color);"></i>
+                            <div class="input-field"><label>Target</label><input type="date" id="date-end"></div>
+                        </div>
+                        <button id="calc-date-diff" class="btn-action mt-20">Calculate Span</button>
+                        <div id="date-result" class="res-box mt-20"></div>
+                    </div>
+                </section>
+
+                <section id="mode-settings" class="mode-container">
+                    <div class="tool-card">
+                        <h3>Interface Customization</h3>
+                        <div class="grid-2 mt-20">
+                            <div class="input-field"><label>Accent Color</label><input type="color" id="set-accent"
+                                    value="#58a6ff"></div>
+                            <div class="input-field"><label>Glass Intensity (Blur)</label><input type="range"
+                                    id="set-blur" min="4" max="40" value="24"></div>
+                            <div class="input-field"><label>Panel Opacity</label><input type="range" id="set-opacity"
+                                    min="0.1" max="1" step="0.05" value="0.7"></div>
+                            <button id="reset-settings" class="btn-secondary"
+                                style="height:55px; margin-top:33px;">Factory Reset</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast">Action Confirmed.</div>
+    <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+
+    <script src="modules/calculator.js"></script>
+    <script src="modules/converter.js"></script>
+    <script src="modules/financial.js"></script>
+    <script src="modules/graph.js"></script>
+    <script src="modules/matrix.js"></script>
+    <script src="modules/equations.js"></script>
+    <script src="modules/programmer.js"></script>
+    <script src="modules/stopwatch.js"></script>
+    <script src="modules/password.js"></script>
+    <script src="modules/health.js"></script>
+    <script src="modules/datetime.js"></script>
+    <script src="modules/settings.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
